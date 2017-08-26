@@ -1,0 +1,75 @@
+<section id="Admin" class="wrapper">
+	<div class="inner">
+		<div class="row">
+			<!-- <div class="8u 12u$(medium)">
+				Message from <input type="date" name="" ng-model="min_time"> to <input type="date" name="" ng-model="max_time">  <button>Filter</button>
+			</div> -->
+			<div class="4u 12u$(medium) -8u">
+				<input type="text" name="username" ng-model="searchText" id="name" value="" placeholder="Search here" /><br>
+			</div>
+			<div class="12u 12u$(medium)">
+				<div class="table-wrapper">
+					<h4>Message History</h4>
+					<center ng-hide="loading">
+						Loading History..<div class="loader"></div>
+					</center>
+					<table class="alt" ng-hide="HistoryTable">
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Number</th>
+								<th>Content</th>
+								<th>Date Time</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="message in messages | limitTo:25:start | filter:searchText">
+								<td>{{message.customID}}</td>
+								<td>{{message.number}}</td>
+								<td>{{message.content}}</td>
+								<td>{{message.datetime}}</td>
+								<td>{{message.status}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<center>
+						<a href="" ng-repeat="page in pages" ng-click="changePage(page)" style="text-decoration: none;">{{page}}&nbsp;</a>
+						<br>
+					</center>
+					<h4>Status Table</h4>
+					<table class="alt">
+						<tr>
+							<td><b>D</b></td>
+							<td>Message was delivered successfully.</td>
+						</tr>
+						<tr>
+							<td><b>U</b></td>
+							<td>The message was undelivered.</td>
+						</tr>
+						<tr>
+							<td><b>P</b></td>
+	                            <td>Message pending, the message is en route.</td>
+						</tr>
+						<tr>
+							<td><b>I</b></td>
+							<td>The number was invalid.</td>
+						</tr>
+						<tr>
+							<td><b>E</b></td>
+							<td>The message has expired.</td>
+						</tr>
+						<tr>
+							<td><b>?</b></td>
+                            <td>Message pushed to networks, the message is en route.</td>
+    					</tr>
+						<tr>
+							<td><b>B</b></td>
+							<td>Blocked, this number has been blocked by the DND.</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

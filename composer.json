@@ -1,0 +1,14 @@
+{
+    "name": "het/sms",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Het Kansara",
+            "email": "hetkansara.work@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^2.4"
+    }
+}

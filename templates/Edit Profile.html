@@ -1,0 +1,46 @@
+<section id="Admin" class="wrapper">
+	<div class="inner">
+		<div class="row">
+			<div class="12u 12u$(medium)">
+				<h3>Your Profile</h3>
+				<hr>
+				<div class="row uniform">
+					<div class="6u 12u$(medium)">
+						Username<br>
+						<input type="text" name="username" ng-model="username" id="name" value="" placeholder="Username" />
+					</div>
+					<!-- <div class="6u 12u$(medium)">
+						Package (Existing Package: 2010 SMS)<br>
+						<input type="text" name="username" ng-model="newPackage" id="name" value="" placeholder="This will add SMS to your Existing Package" />
+					</div> -->
+					<div class="6u 12u$(medium)">
+						Old Password<br>
+						<input type="password" name="Password" ng-model="password" id="name" value="" placeholder="Old Password" />
+					</div>
+					<div class="6u 12u$(medium)">
+						New Password<br>
+						<input type="password" name="Password" ng-model="new_password" id="name" value="" placeholder="New Password" />
+					</div>
+					<div class="6u 12u$(medium)">
+						Confirm Password<br>
+						<input type="password" name="Password" ng-model="confirm_password" id="name" value="" placeholder="Confirm Password" />
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u$">
+						Default Message
+						<textarea name="message" id="message" ng-model="message" placeholder="Enter your message" rows="6">{{message}}</textarea>
+					</div>
+				</div>
+				<div class="12u$"><br>
+					<center>
+						<ul class="actions">
+							<li><button ng-click="updateProfile()" class="button special">Update Profile</button></li>
+						</ul>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<!--
+	Theory by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html ng-app="RoutesModule">
+	<head>
+		<title>SendMySMS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/toastr.css" />
+		<link rel="shortcut icon" href="images/SMS.png">
+	</head>
+		<!-- Header -->
+	<body ng-controller="homeLinks">
+		<header id="header">
+			<div class="inner">
+				<a href="index.html" class="logo" class="hidden">Send My SMS</a>
+				<nav id="nav">
+					<a ng-repeat="link in links" href="{{link.path}}">{{link.name}}</a>
+					<a ng-repeat="button in butttons" ng-click="logout()" href="{{button.path}}">{{button.name}}</a>
+				</nav>
+				<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+			</div>
+		</header>
+		<!-- One -->
+		<ng-view></ng-view>		
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="flex">
+						<div class="copyright">
+							&copy; Copyrights Resevred 2017. Design: <a href="https://templated.co" target="_BLANK">TEMPLATED</a>. Developed by <a href="https://www.facebook.com/het.kansara.9" target="_BLANK">Het Kansara</a>
+						</div>
+						<ul class="icons">
+							<li><a href="https://www.facebook.com/het.kansara.9" target="_BLANK" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="https://twitter.com/Het_HK" target="_BLANK" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/smoothScrolling.js"></script>
+		<script src="assets/js/angular.js"></script>
+		<script src="assets/js/angular-cookies.js"></script>
+		<script src="assets/js/angular-route.js"></script>
+		<script src="assets/js/toastr.js"></script>
+		<script src="assets/js/mainScript.js"></script>
+		<script src="assets/js/angularServices.js"></script>
+		<script src="assets/js/plotly-1.2.0.min.js"></script>
+		<script type="text/javascript">
+			function selectAll(value){
+				$('.'+value).prop('checked',$('#'+value).is(":checked"));
+			}
+			function exportToExcel(element){
+			    var data_type = 'data:application/vnd.ms-excel';
+			    var table_div = document.getElementById(element);
+			    var table_html = table_div.outerHTML.replace(/ /g, '%20');
+
+			    var a = document.createElement('a');
+			    a.href = data_type + ', ' + table_html;
+			    a.download = 'Send_My_SMS_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
+			    a.click();
+			}
+			
+		</script>
+	</body>
+</html>

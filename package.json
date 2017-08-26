@@ -1,0 +1,22 @@
+{
+  "name": "send-my-sms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Kansara/send-my-sms.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/Kansara/send-my-sms/issues"
+  },
+  "homepage": "https://gitlab.com/Kansara/send-my-sms#README",
+  "dependencies": {
+    "dotenv": "^4.0.0"
+  }
+}
