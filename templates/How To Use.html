@@ -1,0 +1,61 @@
+<!-- <section id="CSV Message" class="wrapper"> -->
+	<div class="inner">
+		<div class="row">
+			<div class="12u 12u$(medium)">
+				<!-- <div id="flex-container">
+				    <div class="flex-item box" id="raw">
+				    	<h2>How to Use ?</h2>
+				    </div>
+				</div>
+				<div id="flex-container">
+				    <div class="raw-item box" id="pieChartContainer" id="flex">
+				    	<ul>
+				    		<li><a href="" style="text-decoration: none;">Send SMS</a></li>
+				    		<li><a href="" style="text-decoration: none;">Dynamic CSV SMS</a></li>
+				    		<li><a href="" style="text-decoration: none;">Add Contacts</a></li>
+				    		<li><a href="" style="text-decoration: none;">Message History</a></li>
+				    	</ul>
+				    </div>
+				    <div class="flex-item box" id="lineChartContainer" id="raw"> -->
+				    	<h3>What is Dynamic CSV Message?</h3>
+						<p>Dynamic CSV Message is a message generated from a csv file. You can create any csv file containing your data collumns. Each row from your file will be converted into a message and system will send that message to the given contact number.</p>
+						<h4>Steps:</h4>
+						<h4>1. Create .csv file <span style="color:grey;">(You can download a sample file from here <a href="http://sendmysms.netau.net/Sample/Dynamic%20CSV%20Sample.csv" style="color: #5385c1;">Sample csv</a>)</span></h4>
+						<p>In sample file there are three columns for the message and other is contact number on which the message to be sent. These three column headers will be taken as variables in the Message Template.</p>
+						<center>
+							<img src="images/sample.png">
+							<br><span>Sample Csv File</span>
+						</center><br>
+						<h4>2. Create a Message Template consisting of your column variables</h4>
+						<p>Column headers will be used as variables in your template message. In above sample csv there are three variables <span style="color: black;">"Name", "Marks"</span> and <span style="color: black;">"Exam"</span>. (Variables are <span style="color: black;">case-sensitive</span>. So be careful while using variables in message).
+						All variables are declared in curly braces <span style="color: black;">'{variable-name}'</span> (ex. <span style="color: black;">{Name}</span>).<br>
+						Template message for above sample can be <br>
+						<span style="color: black;">"Hello {Name},<br>
+						You got {Marks} marks in {Exam} exam"</span>
+						<br>
+						above template will generate two outputs from the csv file
+						<br>
+						<span style="color: black;">"Hello Steve,<br>
+						You got 50 marks in Internal exam"</span> (This message will be sent to number 1234567890)
+						<br>
+						<span style="color: black;">"Hello John,<br>
+						You got 40 marks in External exam"</span> (This message will be sent to number 1234567809)
+						<br>
+						You can set any number of variables at a time. <span style="color: black;">User is advised to not to change header for the contact number.</span> If you do so, the system may miss behave.</p><br><br><br>
+						<h4>3. Send Message</h4>
+						Go to the "<a href="http://sendmysms.netau.net/#/DynamicMessage" target="_BLANK" style="text-decoration: none;">Dynamic CSV Message</a>" tab.
+						<br>
+						Upload your .csv file and set your Template Message in MessageBox.<br>Click on <span style="color: black;">Send SMS</span> Button.
+						<br>
+						Done. &#128516;
+						<center>
+							<img src="images/Sample1.png">
+							<br><span>Screenshot of Dynamic CSV Message Page</span>
+						</center><br>
+						
+					</div>
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>	
+<!-- </section> -->

@@ -1,0 +1,152 @@
+<section id="Admin" class="wrapper">
+	<div class="inner">
+		<div class="row">
+			<div class="12u 12u$(medium)">
+				<div class="table-wrapper">
+					<div ng-hide="warningsTable" style="border: 1px solid lightgrey; padding: 15px;">
+						<h4 style="color: #ffb300;float: left;">Warnings</h4>
+						<button ng-click="closeWarningBox()" style="float: right;background-color: white;"  class="button special"><img src="images/close.png"></button></li>
+						<table class="alt" id="Warning_Data">
+							<thead>
+								<tr>
+									<th>Number</th>
+									<th>Message</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="warning in warnings">
+									<td>{{warning.numbers}}</td>
+									<td>{{warning.message}}</td>
+								</tr>
+								<tr>
+									<td colspan="2"><button id="btnExport" onclick="exportToExcel('Warning_Data');" style="float: right;">Export to Excel</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div ng-hide="errorsTable" style="border: 1px solid lightgrey; padding: 15px;">
+						<h4 style="color:#ef5350;float: left;">Errors</h4>
+						<button ng-click="closeErrorBox()" style="float: right;background-color: white;"  class="button special"><img src="images/close.png"></button></li>
+						<!-- <a href="" ng-click="closeErrorBox()"><img style="float: right;" src="images/close.png"></a> -->
+						<table class="alt" id="Error_Data">
+							<thead>
+								<tr>
+									<th>Code</th>
+									<th>Message</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="error in errors">
+									<td>{{error.code}}</td>
+									<td>{{error.message}}</td>
+								</tr>
+								<tr>
+									<td colspan="2"><button id="btnExport" onclick="exportToExcel('Error_Data');" style="float: right;">Export to Excel</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div><br>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="inner">
+		<div class="row">
+			<div class="3u 12u$(medium)">
+				<div style="border: 1px solid lightgrey; padding: 15px;">
+				<h3 style="color:#ffb300;">SMS Package</h3>
+					{{package}} messages
+				</div>
+				<hr>
+				<div style="border: 1px solid lightgrey; padding: 15px;">
+				<h3 style="color:#ef5350;">SMS Sent</h3>
+					{{package-balance.sms}} messages
+				</div>
+				<hr>
+				<div style="border: 1px solid lightgrey; padding: 15px;">
+				<h3 style="color:#2e7d32;">SMS Balance</h3>
+					{{balance.sms}} messages
+				</div>
+			</div>
+			<div class="9u 12u$(medium)">
+				<h3>Send SMS</h3>
+				<hr>
+				<form id="sendSMS">
+				<input type="hidden" value="send_sms" name="action">
+				<input type="hidden" value="{{cookie.username}}" name="username">
+				<input type="hidden" value="{{cookie.api_key}}" name="api_key">
+				<div class="row uniform">
+					<div class="12u$">
+						<input type="text" name="numbers" ng-model="numbers" id="name" value="" placeholder="Contact Numbers" /><br>
+						<a href="" ng-click="showContacts()" style="text-decoration: none;float: right;">Contacts</a>
+					</div>
+					<div class="12u$" ng-hide="contacts">
+						<center>
+							<h3>Groups</h3>	
+						</center>
+						<table>
+						<thead>
+							<tr>
+								<th>Group Id</th>
+								<th>Group Name</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="group in groups  | orderBy:['name'] "> 
+								<td><input type="checkbox" class="groups" id="{{group.id}}" value="{{group.id}}" onChange="selectAll(this.id);">
+									<label for="{{group.id}}">{{group.id}}</label></td>
+								<td>{{group.name}}</td>
+							</tr>
+						</tbody>
+					</table><br>
+						<center>
+							<h3>All Contacts</h3>
+						</center>
+						<table>
+							<thead>
+								<tr>
+									<th>Group</th>
+									<th>Contact</th>
+									<th>Name</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="contact in contacts | orderBy:['group_name','first_name']">
+									<td>
+										<input type="checkbox" name="contacts[]" id="{{contact.number}}" class="{{contact.group_id}}" value="{{contact.number}}">
+										<label for="{{contact.number}}">{{contact.group_name}}</label>
+									</td>
+									<td>
+										{{contact.number}}
+									</td>
+									<td>
+										{{contact.first_name}} {{contact.last_name}}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u$">
+						<textarea name="message" id="message" ng-model="message" placeholder="Enter your message" rows="6"></textarea>
+					</div>
+				</div>
+				<div class="12u$"><br>
+					<center>
+						<ul class="actions">
+							<li><input type="submit" value="Send SMS" ng-click="showLoading()"></li>
+							<!-- <li><button ng-click="sendSMS()" class="button special">Send SMS</button></li> -->
+							<li ng-hide="loading">
+								Sending Sms..<div class="loader"></div>
+							</li>
+						</ul>
+					</center>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</section>

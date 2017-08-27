@@ -1,0 +1,32 @@
+{
+  "name": "send-my-sms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Kansara/send-my-sms.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/Kansara/send-my-sms/issues"
+  },
+  "homepage": "https://gitlab.com/Kansara/send-my-sms#README",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-cookies": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "jquery": "^1.11.3",
+    "plotly": "^1.0.6",
+    "skel-framework": "git+https://github.com/ajlkn/skel.git",
+    "toastr": "^2.1.2"
+  },
+  "devDependencies": {
+    "webpack": "^3.5.5"
+  }
+}
