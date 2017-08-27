@@ -10,6 +10,13 @@
  * View Message History
  * Reporting of SMS usage
 
+## Link to Demo
+TODO
+
+## External Libraries/API used
+TODO
+
+## Features/Functionalities explaination
 ### Send Bulk SMS
 
  * User can send a single SMS to multiple people or [Contact Group(s)](#crud-contact-group)
@@ -51,3 +58,10 @@ It will send out following 2 SMS:
 ### Reporting of SMS usage
 
 * You can visualize your SMS usage through the dashboard provided
+
+## Screenshots
+![Dashboard](http://imgur.com/mYrRBB9)
+![Send SMS](http://imgur.com/CoYwqJc)
+![Dynamic SMS](http://imgur.com/8e8oAtK)
+![Groups and Contacts](http://imgur.com/2eVIhxC)
+![Message History](http://imgur.com/X5qtryD)
