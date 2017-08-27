@@ -60,8 +60,8 @@ It will send out following 2 SMS:
 * You can visualize your SMS usage through the dashboard provided
 
 ## Screenshots
-![Dashboard](http://imgur.com/mYrRBB9)
-![Send SMS](http://imgur.com/CoYwqJc)
-![Dynamic SMS](http://imgur.com/8e8oAtK)
-![Groups and Contacts](http://imgur.com/2eVIhxC)
-![Message History](http://imgur.com/X5qtryD)
+![Dashboard](http://i.imgur.com/mYrRBB9.png)
+![Send SMS](http://i.imgur.com/CoYwqJc.png)
+![Dynamic SMS](http://i.imgur.com/8e8oAtK.png)
+![Groups and Contacts](http://i.imgur.com/2eVIhxC.png)
+![Message History](http://i.imgur.com/X5qtryD.png)
