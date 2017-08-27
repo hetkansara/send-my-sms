@@ -2,6 +2,9 @@
 
 **SendMySMS** is a side project that I made during my college time. It allows registered users to send SMS in various ways to single person or a group of people.
 
+## Index
+TODO
+
 ## Features/Functionalities
  * Send Bulk SMS
  * Send Dynamic SMS
@@ -14,6 +17,9 @@
 TODO
 
 ## External Libraries/API used
+TODO
+
+## Structure of Project
 TODO
 
 ## Features/Functionalities explaination
