@@ -82,7 +82,7 @@ var app = angular
         }
 
     })
-    .controller("homeController", function($scope, $log, authenticateUser, $rootScope, httpService, myCookieService, $location) {
+    .controller("homeController", function($scope, authenticateUser, $rootScope, httpService, myCookieService, $location) {
         angular.element( document.querySelector('.logo') ).addClass('hidden');
         angular.element( document.querySelector('body') ).removeClass('subpage');
         $scope.user = "";
@@ -99,12 +99,11 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     $scope.loading = 1;
                     var data = response.data;
                     if (data.success == true) {
-                        $log.info(data.package);
                         var params = {
                             "username": data.username,
                             "password": data.password,
@@ -151,11 +150,11 @@ var app = angular
             );
         }
     })
-    .controller("sendSMSController", function($rootScope, $log, $scope, authenticateUser, httpService, myCookieService) {
+    .controller("sendSMSController", function($rootScope, $scope, authenticateUser, httpService, myCookieService) {
         angular.element( document.querySelector('body') ).addClass('subpage');
         angular.element( document.querySelector('.logo') ).removeClass('hidden');
         authenticateUser.authAtAdminRoute();
-        var url = 'http://localhost/send%20my%20sms/form_handling.php';
+        var url = 'http://localhost/send%20my%20sms/request_handler.php';
         $scope.numbers = "";
         $scope.warningsTable = 1;
         $scope.errorsTable = 1;
@@ -170,11 +169,12 @@ var app = angular
         }
         var params = {
             "get_content": true,
-            "username": $scope.cookie.username
+            "username": $scope.cookie.username,
+            "api_key": $scope.cookie.api_key,            
         };
         httpService.sendRequest(
             "GET",
-            "form_handling.php",
+            "request_handler.php",
             function(response) {
                 var data = response.data;
                 $scope.message = data.message;
@@ -193,7 +193,7 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     var data = response.data;
                     $scope.balance = data.balance;
@@ -213,7 +213,7 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     var data = response.data;
                     $scope.groups = data.groups;
@@ -233,7 +233,7 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     $scope.contacts = response.data;
                 },
@@ -264,7 +264,6 @@ var app = angular
             else{
                 var reason = angular.fromJson(data);
                 $scope.loading = 1;
-                $log.info("Reason: "+response);
                 toastr.error("Error! " + reason.status + ": " + reason.statusText);
             }
         }
@@ -320,7 +319,7 @@ var app = angular
         $scope.loading = 0;
         httpService.sendRequest(
             "GET",
-            "form_handling.php",
+            "request_handler.php",
             function(response) {
                 $scope.loading = 1;
                 $scope.HistoryTable = 0;
@@ -354,11 +353,12 @@ var app = angular
         $scope.password = $scope.new_password = $scope.confirm_password = $scope.newPackage = '';
         var params = {
             "get_content": true,
-            "username": $scope.cookie.username
+            "username": $scope.cookie.username,
+            "api_key": $scope.cookie.api_key            
         };
         httpService.sendRequest(
             "GET",
-            "form_handling.php",
+            "request_handler.php",
             function(response) {
                 var data = response.data;
                 $scope.message = data.message;
@@ -376,7 +376,7 @@ var app = angular
         $scope.updateProfile = function() {
             $scope.cookie = myCookieService.getCookie();
             var params = {
-                "profile": true,
+                "update_profile": true,
                 "username": $scope.cookie.username,
                 "new_username": $scope.username,
                 "message": $scope.message,
@@ -387,7 +387,7 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     var data = response.data;
                     if (data.success == true) {
@@ -407,11 +407,11 @@ var app = angular
             );
         }
     })
-    .controller("addContactsController", function($scope, $cookies, authenticateUser, httpService, myCookieService, $log, $location) {
+    .controller("addContactsController", function($scope, $cookies, authenticateUser, httpService, myCookieService, $location) {
         angular.element( document.querySelector('body') ).addClass('subpage');
         angular.element( document.querySelector('.logo') ).removeClass('hidden');
         authenticateUser.authAtAdminRoute();
-        var url = 'http://localhost/send%20my%20sms/form_handling.php';
+        var url = 'http://localhost/send%20my%20sms/request_handler.php';
         $scope.loading = $scope.loading1 = $scope.loading2 = $scope.loading3 = $scope.contactsTable = $scope.groupsTable = 1;
         $scope.cookie = myCookieService.getCookie();
         $scope.groupContacts = function(group){
@@ -428,7 +428,7 @@ var app = angular
             };
         	httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     $scope.loading2 = 1;
                     $scope.groupsTable = 0;
@@ -449,7 +449,6 @@ var app = angular
             event.preventDefault();
             //grab all form data  
             var formData = new FormData($(this)[0]);
-            $log.info(formData);
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -542,11 +541,11 @@ var app = angular
             return false;
         });
     }) 
-    .controller("contactsController", function($scope, $cookies, authenticateUser, httpService, myCookieService, $log, $location) {
+    .controller("contactsController", function($scope, $cookies, authenticateUser, httpService, myCookieService, $location) {
         angular.element( document.querySelector('body') ).addClass('subpage');
         $scope.group_selected = $cookies.get('group');
         $scope.cookie = myCookieService.getCookie();
-        var url = 'http://localhost/send%20my%20sms/form_handling.php';
+        var url = 'http://localhost/send%20my%20sms/request_handler.php';
         $scope.loading = $scope.loading2 = 1;
         $scope.ContactTable = 1;
         var updateGroups = function(){
@@ -558,7 +557,7 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     $scope.loading2 = 1;
                     var data = response.data;
@@ -583,7 +582,7 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     $scope.loading = 1;
                     $scope.ContactTable = 0;
@@ -634,11 +633,11 @@ var app = angular
             alert('hello');
         }
     })
-    .controller("dynamicMessageController", function($rootScope, $log, $scope, authenticateUser, httpService, myCookieService) {
+    .controller("dynamicMessageController", function($rootScope, $scope, authenticateUser, httpService, myCookieService) {
         angular.element( document.querySelector('body') ).addClass('subpage');
         angular.element( document.querySelector('.logo') ).removeClass('hidden');
         authenticateUser.authAtAdminRoute();
-        var url = 'http://localhost/send%20my%20sms/form_handling.php';
+        var url = 'http://localhost/send%20my%20sms/request_handler.php';
         $scope.numbers = "";
         $scope.warningsTable = 1;
         $scope.messagesSentTable = 1;
@@ -654,11 +653,12 @@ var app = angular
         }
         var params = {
             "get_content": true,
-            "username": $scope.cookie.username
+            "username": $scope.cookie.username,
+            "api_key": $scope.cookie.api_key            
         };
         httpService.sendRequest(
             "GET",
-            "form_handling.php",
+            "request_handler.php",
             function(response) {
                 var data = response.data;
                 $scope.message = data.message;
@@ -677,7 +677,7 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     var data = response.data;
                     $scope.balance = data.balance;
@@ -716,7 +716,6 @@ var app = angular
             else{
                 var reason = angular.fromJson(data);
                 $scope.loading = 1;
-                $log.info("Reason: "+response);
                 toastr.error("Error! " + reason.status + ": " + reason.statusText);
             }
         }
@@ -758,7 +757,7 @@ var app = angular
             $scope.messagesSentTable = 1;
         }
     })
-    .controller("dashboardController", function($rootScope, $log, $scope, authenticateUser, httpService, myCookieService) {
+    .controller("dashboardController", function($rootScope, $scope, authenticateUser, httpService, myCookieService) {
         angular.element( document.querySelector('body') ).addClass('subpage');
         angular.element( document.querySelector('.logo') ).removeClass('hidden');
         authenticateUser.authAtAdminRoute();
@@ -773,29 +772,27 @@ var app = angular
             };
             httpService.sendRequest(
                 "GET",
-                "form_handling.php",
+                "request_handler.php",
                 function(response) {
                     var params = {
                         "get_content": true,
-                        "username": cookie.username
+                        "username": cookie.username,
+                        "api_key": cookie.api_key
                     };
                     var data = response.data;
                     $scope.balance = data.balance.sms;
                     var balance = data.balance;
                     httpService.sendRequest(
                         "GET",
-                        "form_handling.php",
+                        "request_handler.php",
                         function(response) {
                             $scope.loading1 = 1;
                             var data1 = response.data;
                             var package = data1.package;
-                            $log.info(package);
                             var sent = package - balance.sms;
                             var values = [];
-                            $log.info(package+" "+balance.sms+" "+sent);
                             values.push(balance.sms);
                             values.push(sent);
-                            $log.info($scope.package);
                             var data = [{
                               values: values,
                               labels: ['SMS-Remaining', 'SMS-Sent'],
@@ -835,7 +832,7 @@ var app = angular
         };
         httpService.sendRequest(
             "GET",
-            "form_handling.php",
+            "request_handler.php",
             function(response) {
                 $scope.loading = 1;
                 var data = response.data;
@@ -889,3 +886,17 @@ var app = angular
         authenticateUser.authAtAdminRoute();
         
     });
+    
+    function selectAll(value){
+        $('.'+value).prop('checked',$('#'+value).is(":checked"));
+    }
+    function exportToExcel(element){
+        var data_type = 'data:application/vnd.ms-excel';
+        var table_div = document.getElementById(element);
+        var table_html = table_div.outerHTML.replace(/ /g, '%20');
+
+        var a = document.createElement('a');
+        a.href = data_type + ', ' + table_html;
+        a.download = 'Send_My_SMS_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
+        a.click();
+    }

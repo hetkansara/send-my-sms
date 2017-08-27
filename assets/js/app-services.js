@@ -1,8 +1,6 @@
-/// <reference path="angular.js">
 app.factory('httpService',function($http){
     return{
         sendRequest: function(method,requestUrl,successCallback,errorCallback,parameters){
-            requestUrl = "http://localhost/send%20my%20sms/"+requestUrl;
             $http({
                 method: method,
                 url: requestUrl,

@@ -17,6 +17,12 @@
   },
   "homepage": "https://gitlab.com/Kansara/send-my-sms#README",
   "dependencies": {
-    "dotenv": "^4.0.0"
+    "angular": "^1.5.0",
+    "angular-cookies": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "jquery": "^1.11.3",
+    "plotly": "^1.0.6",
+    "skel-framework": "git+https://github.com/ajlkn/skel.git",
+    "toastr": "^2.1.2"
   }
 }
