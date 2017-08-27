@@ -95,7 +95,7 @@ var app = angular
             var params = {
                 "username": $scope.user,
                 "password": $scope.password,
-                "login_button": true
+                "action": "login"
             };
             httpService.sendRequest(
                 "GET",
@@ -168,7 +168,7 @@ var app = angular
                 $scope.contacts=1;
         }
         var params = {
-            "get_content": true,
+            "action": "get_package_template",
             "username": $scope.cookie.username,
             "api_key": $scope.cookie.api_key,            
         };
@@ -187,7 +187,7 @@ var app = angular
         );
         var updateBalance = function() {
             var params = {
-                "get_SMS_Balance": true,
+                "action": "get_remaining_sms",
                 "api_key": $scope.cookie.api_key,
                 "username": $scope.cookie.username
             };
@@ -207,7 +207,7 @@ var app = angular
         updateBalance();
         var updateGroups = function(){
             var params = {
-               "get_Groups": true,
+               "action": "get_groups",
                 "api_key": $scope.cookie.api_key,
                 "username": $scope.cookie.username  
             };
@@ -227,7 +227,7 @@ var app = angular
         updateGroups(); 
         var updateContacts = function(){
             var params = {
-               "get_Contacts": true,
+               "action": "get_groups_and_contacts",
                 "api_key": $scope.cookie.api_key,
                 "username": $scope.cookie.username  
             };
@@ -309,7 +309,7 @@ var app = angular
         var cookie = myCookieService.getCookie();
 
         var params = {
-            "get_SMS": true,
+            "action": "get_message_history",
             "api_key": cookie.api_key,
             "username": cookie.username,
             "min_time": $scope.min_time,
@@ -352,7 +352,7 @@ var app = angular
         $scope.username = $scope.cookie.username;
         $scope.password = $scope.new_password = $scope.confirm_password = $scope.newPackage = '';
         var params = {
-            "get_content": true,
+            "action": "get_package_template",
             "username": $scope.cookie.username,
             "api_key": $scope.cookie.api_key            
         };
@@ -376,7 +376,7 @@ var app = angular
         $scope.updateProfile = function() {
             $scope.cookie = myCookieService.getCookie();
             var params = {
-                "update_profile": true,
+                "action": "update_profile",
                 "username": $scope.cookie.username,
                 "new_username": $scope.username,
                 "message": $scope.message,
@@ -422,7 +422,7 @@ var app = angular
             $scope.loading2 = 0;
             $scope.groupsTable = 1;
         	var params = {
-               "get_Groups": true,
+               "action": "get_groups",
 	            "api_key": $scope.cookie.api_key,
 	            "username": $scope.cookie.username	
             };
@@ -551,7 +551,7 @@ var app = angular
         var updateGroups = function(){
             $scope.loading2 = 0;
             var params = {
-               "get_Groups": true,
+               "action": "get_groups",
                 "api_key": $scope.cookie.api_key,
                 "username": $scope.cookie.username  
             };
@@ -575,7 +575,7 @@ var app = angular
             $scope.loading = 0;
             $scope.ContactTable = 1;
             var params = {
-               "get_Contacts": true,
+               "action": "get_groups_and_contacts",
                "group": $scope.group_selected,
                 "api_key": $scope.cookie.api_key,
                 "username": $scope.cookie.username  
@@ -652,7 +652,7 @@ var app = angular
                 $scope.contacts=1;
         }
         var params = {
-            "get_content": true,
+            "action": "get_package_template",
             "username": $scope.cookie.username,
             "api_key": $scope.cookie.api_key            
         };
@@ -671,7 +671,7 @@ var app = angular
         );
         var updateBalance = function() {
             var params = {
-                "get_SMS_Balance": true,
+                "action": "get_remaining_sms",
                 "api_key": $scope.cookie.api_key,
                 "username": $scope.cookie.username
             };
@@ -766,7 +766,7 @@ var app = angular
         $scope.loading1 = 0;
         var updateBalance = function() {
             var params = {
-                "get_SMS_Balance": true,
+                "action": "get_remaining_sms",
                 "api_key": cookie.api_key,
                 "username": cookie.username
             };
@@ -775,7 +775,7 @@ var app = angular
                 "request_handler.php",
                 function(response) {
                     var params = {
-                        "get_content": true,
+                        "action": "get_package_template",
                         "username": cookie.username,
                         "api_key": cookie.api_key
                     };
@@ -826,7 +826,7 @@ var app = angular
         updateBalance();
 
         var params = {
-            "get_SMS": true,
+            "action": "get_message_history",
             "api_key": cookie.api_key,
             "username": cookie.username
         };

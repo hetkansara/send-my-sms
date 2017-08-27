@@ -5,7 +5,7 @@
 				<h3>Groups</h3>
 				<hr>
 				<form id="addGroup">
-					<input type="hidden" name="addGroup">
+					<input type="hidden" value="add_group" name="action">
 					<input type="hidden" value="{{cookie.username}}" name="username">
 					<input type="hidden" value="{{cookie.api_key}}" name="api_key">
 					<div class="row uniform">
@@ -28,7 +28,7 @@
 				<h4 style="float: left;">All Groups</h4>
 				
 				<form id="deleteGroup">
-					<input type="hidden" name="delete_Groups">
+					<input type="hidden" value="delete_groups" name="action">
 					<input type="hidden" value="{{cookie.username}}" name="username">
 					<input type="hidden" value="{{cookie.api_key}}" name="api_key">
 					<center ng-hide="loading2">
@@ -61,7 +61,7 @@
 				<h3>Contacts</h3>
 				<hr>
 				<form id="addContacts">
-					<input type="hidden" name="addContacts">
+					<input type="hidden" value="add_contacts" name="action">
 					<input type="hidden" value="{{cookie.username}}" name="username">
 					<input type="hidden" value="{{cookie.api_key}}" name="api_key">
 					<div class="row uniform">

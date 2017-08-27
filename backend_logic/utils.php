@@ -1,4 +1,14 @@
 <?php
+
+    /**
+     * Checks if action parameter of current request
+     */
+    function is_action($action){
+        
+        return empty($_REQUEST['action']) ? false : 
+            $_REQUEST['action'] === $action ? true : false ;
+    }
+
     /**
      * Send POST curl request to API and returns response
      */
