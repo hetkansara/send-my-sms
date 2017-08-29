@@ -1,5 +1,6 @@
 /// <reference path="../../node_modules/angular/angular.js"/>
 
+import * as utils from './utils.js';
 import * as routes from './routes.js';
 import * as homeController from './controllers/home.js';
 import * as homeLinks from './controllers/home-links.js';
@@ -15,6 +16,11 @@ import * as demoController from './controllers/dashboard.js';
 import * as httpService from './services/http.js';
 import * as authenticationService from './services/authenticate-user.js';
 import * as cookieService from './services/cookie.js';
+
+export default {
+    selectAll: utils.default.selectAll,
+    exportToExcel: utils.default.exportToExcel
+}
 
 var app = angular
     .module("RoutesModule", ["ngRoute", "ngCookies"])

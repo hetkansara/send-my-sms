@@ -15,21 +15,21 @@ export default {
     },
     app_links: [{
         name: "Dashboard",
-        path: "#Dashboard"
+        path: "/#!/Dashboard"
     },{
         name: "Send SMS",
-        path: "#SendSMS"
+        path: "/#!/SendSMS"
     },{
         name: "Dynamic CSV Message",
-        path: "#DynamicMessage"
+        path: "/#!/DynamicMessage"
     }, {
         name: "Add Contacts",
-        path: "#AddContacts"
+        path: "/#!/AddContacts"
     }, {
         name: "Message History",
-        path: "#Messages"
+        path: "/#!/Messages"
     }, {
         name: "Profile",
-        path: "#Profile"
+        path: "/#!/Profile"
     }]
 };

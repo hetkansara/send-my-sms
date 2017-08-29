@@ -1,5 +1,5 @@
 <?php
-    $api_key = urlencode(get_api_key());
+    $api_key = get_api_key();
     
     $sql = "SELECT * FROM `users_master` WHERE `api_key` = '".$api_key."'";
     

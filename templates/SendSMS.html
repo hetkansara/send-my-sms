@@ -19,7 +19,7 @@
 									<td>{{warning.message}}</td>
 								</tr>
 								<tr>
-									<td colspan="2"><button id="btnExport" onclick="exportToExcel('Warning_Data');" style="float: right;">Export to Excel</button></td>
+									<td colspan="2"><button id="btnExport" onclick="script.default.exportToExcel('Warning_Data');" style="float: right;">Export to Excel</button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -42,7 +42,7 @@
 									<td>{{error.message}}</td>
 								</tr>
 								<tr>
-									<td colspan="2"><button id="btnExport" onclick="exportToExcel('Error_Data');" style="float: right;">Export to Excel</button></td>
+									<td colspan="2"><button id="btnExport" onclick="script.default.exportToExcel('Error_Data');" style="float: right;">Export to Excel</button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -94,7 +94,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="group in groups  | orderBy:['name'] "> 
-								<td><input type="checkbox" class="groups" id="{{group.id}}" value="{{group.id}}" onChange="selectAll(this.id);">
+								<td><input type="checkbox" class="groups" id="{{group.id}}" value="{{group.id}}" onChange="script.default.selectAll(this.id);">
 									<label for="{{group.id}}">{{group.id}}</label></td>
 								<td>{{group.name}}</td>
 							</tr>

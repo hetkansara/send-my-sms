@@ -8,8 +8,8 @@ module.exports = function($rootScope,cookieService,$location){
                 $rootScope.butttons = [];
             }
             else{
-              $rootScope.links = [{name: "Dashboard",path: "#Dashboard"},{name: "Send SMS",path: "#SendSMS"},{name: "Dynamic CSV Message",path: "#DynamicMessage"},{name: "Add Contacts",path: "#AddContacts"},{name: "Message History",path: "#Messages"},{name: "Profile",path: "#Profile"}];
-              $rootScope.butttons = [{name: cookieData.username+", Logout",path: "#Home"}];
+              $rootScope.links = [{name: "Dashboard",path: "/#!/Dashboard"},{name: "Send SMS",path: "/#!/SendSMS"},{name: "Dynamic CSV Message",path: "/#!/DynamicMessage"},{name: "Add Contacts",path: "/#!/AddContacts"},{name: "Message History",path: "/#!/Messages"},{name: "Profile",path: "/#!/Profile"}];
+              $rootScope.butttons = [{name: cookieData.username+", Logout",path: "/#!/Home"}];
            }
         },
         authAtHomeRoute: function(){
@@ -17,8 +17,8 @@ module.exports = function($rootScope,cookieService,$location){
             if(cookieData==undefined){
             }else if(cookieData.user_type=="Admin"){
                 $location.path('/Dashboard');
-                $rootScope.links = [{name: "Dashboard",path: "#Dashboard"},{name: "Send SMS",path: "#SendSMS"},{name: "Dynamic CSV Message",path: "#DynamicMessage"},{name: "Add Contacts",path: "#AddContacts"},{name: "Message History",path: "#Messages"},{name: "Profile",path: "#Profile"}];
-                $rootScope.butttons = [{name: cookieData.username+", Logout",path: "#Home"}];                 
+                $rootScope.links = [{name: "Dashboard",path: "/#!/Dashboard"},{name: "Send SMS",path: "/#!/SendSMS"},{name: "Dynamic CSV Message",path: "/#!/DynamicMessage"},{name: "Add Contacts",path: "/#!/AddContacts"},{name: "Message History",path: "/#!/Messages"},{name: "Profile",path: "/#!/Profile"}];
+                $rootScope.butttons = [{name: cookieData.username+", Logout",path: "/#!/Home"}];                 
             }
             else{
                $rootScope.links = [];
