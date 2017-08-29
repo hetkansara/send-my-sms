@@ -1,6 +1,7 @@
 <?php
     $api_key = urlencode(get_api_key());
-
+    
+    $uname = $_POST['username'];
     $file = $_FILES['fileToUpload']['tmp_name'];
     $handle = fopen($file, "r");
     if ($file == NULL) {
