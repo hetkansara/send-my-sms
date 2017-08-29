@@ -3,7 +3,28 @@
 **SendMySMS** is a side project that I made during my college time. It allows registered users to send SMS in various ways to single person or a group of people.
 
 ## Index
-TODO
+ * [Setup Instruction](#setup-instruction)
+ * [Features/Functionalities](#featuresfunctionalities)
+ * [Link to Demo](#link-to-demo)
+ * [External Libraries/API used](#external-librariesapi-used)
+   * [Frontend](#frontend)
+   * [Backend](#backend)
+   * [External API](#external-api)
+ * [Features/Functionalities explaination](#featuresfunctionalities-explaination)
+   * [Send Bulk SMS](#send-bulk-sms)
+   * [Send Dynamic SMS](#send-dynamic-sms)
+   * [CRUD Contact Group](#crud-contact-group)
+   * [View Message History](#view-message-history)
+   * [Reporting of SMS usage](#reporting-of-sms-usage)
+ * [Structure of Project](#structure-of-projectcode-organization)
+ * [Screenshots](#screenshots)
+
+## Setup Instruction
+1. Open terminal and navigate to project folder.
+3. Run `composer install`.
+2. Run `npm install`.
+2. Run `npm build`.
+3. Copy `.env.example` to `.env` and set values of the variables.
 
 ## Features/Functionalities
  * Send Bulk SMS
@@ -14,13 +35,42 @@ TODO
  * Reporting of SMS usage
 
 ## Link to Demo
-TODO
+You can find demo link [here](http://sendmysms.netau.net)
+
+**Credentials**
+
+> `username`: demo
+> 
+> `password`: demo
 
 ## External Libraries/API used
-TODO
+### Frontend
+ * [AngularJS](https://angularjs.org/)
+ * [Webpack](https://webpack.github.io/)
+ * [jQuery](http://jquery.com/)
+ * [Plotly](https://plot.ly)
+ * [Toastr](https://github.com/CodeSeven/toastr)
+### Backend
+ * [phpdotenv](https://github.com/vlucas/phpdotenv)
+### External API
+ * [Textlocal](https://www.textlocal.in)
 
-## Structure of Project
-TODO
+## Structure of Project(Code Organization)
+
+### Dependencies
+All frontend dependencies are managed through `npm` and all backend dependencies are managed through `composer`.
+
+### Frontend
+`index.html` contains is the main file. All html templates are located in `templates` folder.
+
+All Javascipt files are at `assets/js` folder.
+All controllers are located in `assets/js/controller` folder.
+All services are located in `assets/js/services` folder.
+
+There are many Javascript files which are bundled together with `Webpack`, which combines all of them and outputs a `app.bundle.js` which is included in `index.html`.
+
+### Backend
+All the backend logic is divided into small parts which are stored in `backend_logic` folder. All ajax request from frontend are handled by `request_handler.php`. According to current requeest, that particular pieceof logic is included from appropriate files in `backend_logic`.
 
 ## Features/Functionalities explaination
 ### Send Bulk SMS
@@ -29,8 +79,9 @@ TODO
 
 ### Send Dynamic SMS
 
- * Users can specify a message template and message for it will be generated dynamically from CSV file. i.e.
+ * Users can specify a message template and message for it will be generated dynamically from CSV file.
 
+**Example**
 ```
 Hello {parent_name} your ward has scored {marks} in {subject}
 ```
